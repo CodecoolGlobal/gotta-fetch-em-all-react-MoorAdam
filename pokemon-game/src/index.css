@@ -1,13 +1,58 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.location {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.11);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14.1px);
+  -webkit-backdrop-filter: blur(14.1px);
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  text-align: center;
 }
 
-code {
+img {
+  width: 80%;
+  margin: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.297);
+}
+
+button {
+  color: white;
+  /* From https://css.glass */
+  background: rgba(165, 94, 235, 0.505);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14.1px);
+  -webkit-backdrop-filter: blur(14.1px);
+  width: 60%;
+  margin: 10%;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  color: white;
+  font-weight: bold;
+  
+
+}
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 280px));
+  gap: 30px;
+  place-content: center;
+}
+
+body {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.642);
+  background-image: url('./background.png');
+  background-size: 100vw 100%;
 }

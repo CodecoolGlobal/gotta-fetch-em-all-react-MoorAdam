@@ -12,9 +12,15 @@ function LocationList(props) {
         fetchData();
     }, []);
 
-    return (<div className="locationList">
-        {locations.results && locations.results.map(location => <div className="location" key={location.name}><img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
-            {location.name} <button onClick={handleOnClick}>Visit</button></div>)}
+    return (<div className="locationList, grid-parent">
+        
+        {locations.results && locations.results.map(
+            location =>
+                <div className="location" key={location.name}>
+                    <img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
+                    {location.name}
+                    <button onClick={handleOnClick}>Visit</button>
+                </div>)}
     </div>)
 
 }

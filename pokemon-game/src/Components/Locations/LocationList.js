@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-function LocationList() {
+function LocationList(props) {
     const [locations, setLocations] = useState([]);
+    const handleOnClick = props.onClick;
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('https://pokeapi.co/api/v2/location');
@@ -12,7 +13,8 @@ function LocationList() {
     }, []);
 
     return (<div className="locationList">
-        {locations.results && locations.results.map(location => <div className="location" key={location.name}>{location.name}</div>)}
+        {locations.results && locations.results.map(location => <div className="location" key={location.name}><img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
+            {location.name} <button onClick={handleOnClick}>Visit</button></div>)}
     </div>)
 
 }

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [locations, setLocations] = useState([]);
+  const [encounterPokemon, setEncounterPokemon] = useState([]);
+  const [pageState, setPageState] = useState("locations");
 
   useEffect(() => {
     async function fetchData() {
@@ -14,14 +16,34 @@ function App() {
     fetchData();
   }, []);
 
-  function onClick() {
-    console.log('clicked!');
+
+  async function onClickVisitMap(locationName) {
+    setPageState("pokemonList");
     setLocations([]);
+
+    const locationResponse = await fetch(`https://pokeapi.co/api/v2/location/${locationName}`);
+    const selectedLocationJSON = await locationResponse.json();
+
+    const randomAreaURL = getRandomArea(selectedLocationJSON);
+    const randomAreaResponse = await fetch(randomAreaURL);
+    const SelectedAreaJSON = await randomAreaResponse.json();
+    setEncounterPokemon(SelectedAreaJSON.pokemon_encounters);
+    console.log(SelectedAreaJSON.pokemon_encounters);
+  }
+
+  function getRandomArea(data) {
+    const randomAreaNumber = Math.floor(Math.random() * data.areas.length);
+    const randomAreaURL = data.areas[randomAreaNumber].url;
+    return randomAreaURL;
   }
 
   return (
-    <div className="App">
-      <LocationList onClick={onClick} locations={locations}></LocationList>
+    <div className="App" >
+      {
+        pageState === "locations" ? (
+          <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
+        ) : pageState === "pokemonList" ? (<div className='pokemonBackground'>Pokemonlist PLACEHOLDER</div>) : ('battle PLACEHOLDER')
+      }
     </div>
   );
 }

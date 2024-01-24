@@ -11,10 +11,10 @@ function LocationList(props) {
 
         {locations.results && locations.results.map(
             location =>
-                <div className="location" key={location.name}>
+                <div className="glass" key={location.name}>
                     <img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
                     {prepareName(location.name)}
-                    <button onClick={handleOnClick}>Visit</button>
+                    <button onClick={() => { handleOnClick(location.name) }}>Visit</button>
                 </div>)}
     </div>)
 

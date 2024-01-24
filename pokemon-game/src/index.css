@@ -1,4 +1,4 @@
-.location {
+.glass {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.11);
   border-radius: 16px;
@@ -7,6 +7,10 @@
   -webkit-backdrop-filter: blur(14.1px);
   border: 1px solid rgba(255, 255, 255, 0.29);
   text-align: center;
+}
+
+.pokemonImage{
+  image-rendering: pixelated;
 }
 
 img {
@@ -35,7 +39,7 @@ button {
     monospace;
   color: white;
   font-weight: bold;
-  
+
 
 }
 
@@ -55,4 +59,12 @@ body {
   text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.642);
   background-image: url('./background.png');
   background-size: 100vw 100%;
+  margin: 0px;
+}
+
+.pokemonBackground {
+  background-image: url('battle-screen.jpg');
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }

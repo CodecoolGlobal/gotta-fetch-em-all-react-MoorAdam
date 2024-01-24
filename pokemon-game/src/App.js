@@ -14,13 +14,13 @@ function App() {
   ]
 
 
-  const [locations, setLocations] = useState([]);  
+  const [locations, setLocations] = useState([]);
   const [encounterPokemon, setEncounterPokemon] = useState([]);
   const [pageState, setPageState] = useState("locations");
   const [pokemonList, setPokemonList] = useState([])
 
 
-  useEffect(()=>{
+  useEffect(() => {
     async function getPokemons() {
       const pokePromisses = usersPokemon.map(p => {
         const promis = fetch(p)
@@ -32,10 +32,10 @@ function App() {
           setPokemonList(nextPromis)
           console.log(nextPromis);
         })
-  
+
     }
     getPokemons();
-  })
+  }, ([]))
 
   useEffect(() => {
     async function fetchData() {
@@ -69,11 +69,13 @@ function App() {
 
   return (
     <div className="App" >
-      
+
       {
         pageState === "locations" ? (
-          <LocationList onClick={onClick} locations={locations}></LocationList>
-        ) : pageState === "pokemonList" ? (<PokemonList pokemonList={pokemonList}></PokemonList>) : ('battle PLACEHOLDER')
+          <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
+        ) : pageState === "pokemonList" ?
+          (<PokemonList pokemonList={pokemonList}></PokemonList>) :
+          ('battle PLACEHOLDER')
       }
     </div>
   );

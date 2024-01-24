@@ -14,7 +14,7 @@ function LocationList(props) {
                 <div className="location" key={location.name}>
                     <img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
                     {prepareName(location.name)}
-                    <button onClick={handleOnClick}>Visit</button>
+                    <button onClick={() => { handleOnClick(location.name) }}>Visit</button>
                 </div>)}
     </div>)
 

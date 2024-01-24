@@ -35,7 +35,7 @@ button {
     monospace;
   color: white;
   font-weight: bold;
-  
+
 
 }
 
@@ -55,4 +55,12 @@ body {
   text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.642);
   background-image: url('./background.png');
   background-size: 100vw 100%;
+  margin: 0px;
+}
+
+.pokemonBackground {
+  background-image: url('battle-screen.jpg');
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }

@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
-
 function LocationList(props) {
-    const [locations, setLocations] = useState([]);
+    const locations = props.locations;
     const handleOnClick = props.onClick;
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('https://pokeapi.co/api/v2/location');
-            const data = await response.json();
-            setLocations(data);
-        }
-        fetchData();
-    }, []);
+    function prepareName(name) {
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        name = name.replaceAll('-', ' ');
+        return name;
+    }
 
     return (<div className="locationList, grid-parent">
-        
+
         {locations.results && locations.results.map(
             location =>
                 <div className="location" key={location.name}>
                     <img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
-                    {location.name}
+                    {prepareName(location.name)}
                     <button onClick={handleOnClick}>Visit</button>
                 </div>)}
     </div>)

@@ -1,0 +1,26 @@
+function PokemonList(props) {
+    const pokemons = props.pokemonList;
+
+    function prepareName(name) {
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        return name;
+    }
+
+    return (<div className="grid-parent">
+        {
+
+            pokemons.map((p) =>
+                <div className="glass">
+
+                    <img className="pokemonImage" src={p["sprites"]["front_default"]} alt="PokemonImage"></img>
+                    <h2>{prepareName(p.name)}</h2>
+                    {props.onClick && (
+                        <button onClick={props.onClick}>Choose!</button>
+                    )}
+                </div>
+            )
+        }
+
+    </div>)
+}
+export default PokemonList;

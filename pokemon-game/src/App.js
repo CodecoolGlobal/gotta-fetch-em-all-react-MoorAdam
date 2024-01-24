@@ -1,11 +1,41 @@
 import './App.css';
 import LocationList from './Components/Locations/LocationList';
 import { useEffect, useState } from "react";
+import PokemonList from './Components/Locations/PokemonList';
+
+
 
 function App() {
-  const [locations, setLocations] = useState([]);
+
+  const usersPokemon = [
+    "https://pokeapi.co/api/v2/pokemon/bulbasaur",
+    "https://pokeapi.co/api/v2/pokemon/charizard",
+    "https://pokeapi.co/api/v2/pokemon/poliwhirl"
+  ]
+
+
+  const [locations, setLocations] = useState([]);  
   const [encounterPokemon, setEncounterPokemon] = useState([]);
   const [pageState, setPageState] = useState("locations");
+  const [pokemonList, setPokemonList] = useState([])
+
+
+  useEffect(()=>{
+    async function getPokemons() {
+      const pokePromisses = usersPokemon.map(p => {
+        const promis = fetch(p)
+          .then((promis) => promis.json())
+        return promis
+      })
+      Promise.all(pokePromisses)
+        .then((nextPromis) => {
+          setPokemonList(nextPromis)
+          console.log(nextPromis);
+        })
+  
+    }
+    getPokemons();
+  })
 
   useEffect(() => {
     async function fetchData() {
@@ -39,13 +69,16 @@ function App() {
 
   return (
     <div className="App" >
+      
       {
         pageState === "locations" ? (
-          <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
-        ) : pageState === "pokemonList" ? (<div className='pokemonBackground'>Pokemonlist PLACEHOLDER</div>) : ('battle PLACEHOLDER')
+          <LocationList onClick={onClick} locations={locations}></LocationList>
+        ) : pageState === "pokemonList" ? (<PokemonList pokemonList={pokemonList}></PokemonList>) : ('battle PLACEHOLDER')
       }
     </div>
   );
 }
+
+//<button onClick={() => (getPokemons())}>Pokemon</button>
 
 export default App;

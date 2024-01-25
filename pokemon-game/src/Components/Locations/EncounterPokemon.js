@@ -82,6 +82,7 @@ function EncounterPokemon(props) {
                     )}
                  </div>
             </div>
+    )
 }
 
 export default EncounterPokemon;

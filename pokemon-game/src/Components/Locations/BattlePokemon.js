@@ -15,8 +15,6 @@ function HpBar() {
 
 function BattlePokemon(props) {
     const [pokemon, setPokemon] = useState(props.pokemon);
-    const [hp, setHp] = useState();
-
 
     function prepareName(name) {
         if (name) {
@@ -24,9 +22,6 @@ function BattlePokemon(props) {
         }
         return name;
     }
-
-    const [pokemon, setPokemon] = useState(props.pokemon)
-
 
     return (
         <>

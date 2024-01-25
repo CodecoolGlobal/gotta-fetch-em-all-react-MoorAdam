@@ -95,7 +95,7 @@ function App() {
       {pageState === "locations" ? (
         <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
       ) : pageState === "pokemonList" ? (
-        <EncounterPokemon encounterPokemon={encounterPokemon}></EncounterPokemon>
+        <EncounterPokemon pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (
         <>
           <h1>This location doesn't seem to have any pokémon.</h1>

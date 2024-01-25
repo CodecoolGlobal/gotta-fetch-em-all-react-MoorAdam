@@ -1,24 +1,44 @@
+
+import BattlePokemon from "./BattlePokemon.js";
+import { useState } from "react";
+import PokemonList from "./PokemonList.js";
+
 function EncounterPokemon(props) {
     const encounterPokemon = props.encounterPokemon;
+    const [choosenPokemon, setChoosenPokemon] = useState('');
 
-    function prepareName(name) {
-        if (name) {
-            name = name.substring(0, 1).toUpperCase() + name.substring(1);
-        }
-        return name;
+    function handleChoosePokemon(p){
+        setChoosenPokemon(p);
     }
 
     return (
         <div className="pokemonBackground">
-            <div className="grid-parent enemy-pokemon">
+            <div className="grid-parent">
                 {encounterPokemon && encounterPokemon.name && encounterPokemon["sprites"]["front_default"] &&
                     (
-                        <div>
-                            <img className="pokemonImage" src={encounterPokemon["sprites"]["other"]['showdown']['front_default']} alt="EncounterPokemonImg"></img>
-                            <h2>{prepareName(encounterPokemon.name)}</h2>
-                        </div>
+                        choosenPokemon ? (
+                            <div>
+                                <BattlePokemon type={"enemy"} pokemon={encounterPokemon}></BattlePokemon>
+                                <BattlePokemon type={"player"} pokemon={choosenPokemon}></BattlePokemon>
+                            </div>
+                        ) : (
+                            <div>
+                                <PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
+                            </div>
+                            
+                        )
                     )}
             </div>
-        </div>)
+        </div >)
 }
+
+/*
+<div>
+                            <BattlePokemon type={"enemy"} pokemon={encounterPokemon}></BattlePokemon>
+                            <BattlePokemon type={"player"} pokemon={encounterPokemon}></BattlePokemon>
+                        </div>
+*/
+
+//<img className="pokemonEncounter" src={encounterPokemon["sprites"]["other"]['showdown']['front_default']} alt="EncounterPokemonImg"></img>
+
 export default EncounterPokemon;

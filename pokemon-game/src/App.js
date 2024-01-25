@@ -87,7 +87,7 @@ function App() {
     } */
 
   function handleBackToMapSelection() {
-    setPageState("asd");
+    setPageState("locations");
   }
 
   return (
@@ -97,10 +97,11 @@ function App() {
       ) : pageState === "pokemonList" ? (
         <EncounterPokemon pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (
-        <>
+        <div className='no-location'>
           <h1>This location doesn't seem to have any pokémon.</h1>
+          <iframe src="https://giphy.com/embed/26gJzump2Q03pbOmc" title="pokemon"></iframe>
           <button onClick={handleBackToMapSelection}>Select a New Map</button>
-        </>
+        </div>
       ) : (
         <PokemonList pokemonList={pokemonList}></PokemonList>
       )}

@@ -25,20 +25,18 @@ function BattlePokemon(props) {
     }
 
     return (
-        <div>
-
+        <>
             {props.type === "enemy" ?
-                <div className="enemyPokemon">
+                <div className="enemy-pokemon">
                     <h3>{prepareName(pokemon.name)}</h3>
-                    <img src={pokemon.sprites.other.showdown.front_default}></img>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.front_default} alt="enemyPokemon"></img>
                 </div> :
-                <div className="playerPokemon">
+                <div className="player-pokemon">
                     <h3>{prepareName(pokemon.name)}</h3>
-                    <img src={pokemon.sprites.other.showdown.back_default}></img>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.back_default} alt="playerPokemon"></img>
                 </div>
             }
-
-        </div>
+        </>
     );
 
     //this component displays the pokemon in their battle pose.

@@ -1,9 +1,6 @@
 import { useState } from "react"
 
 function HpBar() {
-
-
-
     return (
         <div>
             <div class="health-bar" data-total="1000" data-value="1000">
@@ -17,26 +14,36 @@ function HpBar() {
 }
 
 function BattlePokemon(props) {
+    const [pokemon, setPokemon] = useState(props.pokemon);
+    const [hp, setHp] = useState();
+
+
+    function prepareName(name) {
+        if (name) {
+            name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        }
+        return name;
+    }
 
     const [pokemon, setPokemon] = useState(props.pokemon)
 
+
     return (
-        <div>
-            
+        <>
             {props.type === "enemy" ?
-                <div className="enemyPokemon">
-                    <h3>{pokemon.name}</h3>
+
+                <div className="enemy-pokemon">
+                    <h3>{prepareName(pokemon.name)}</h3>
                     <h3>hp: {props.hp}</h3>
-                    <img src={pokemon.sprites.other.showdown.front_default}></img>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.front_default}></img>
                 </div> :
-                <div className="playerPokemon">
-                    <h3>{pokemon.name}</h3>
+                <div className="player-pokemon">
+                    <h3>{prepareName(pokemon.name)}</h3>
                     <h3>hp: {props.hp}</h3>
-                    <img src={pokemon.sprites.other.showdown.back_default}></img>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.back_default}></img>
                 </div>
             }
-
-        </div>
+        </>
     );
 
     //this component displays the pokemon in their battle pose.

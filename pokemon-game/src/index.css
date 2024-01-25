@@ -21,6 +21,15 @@ html {
   grid-template-areas: 'Header';
 }
 
+.grid-pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 280px));
+  gap: 30px;
+  place-content: center;
+  grid-template-areas: 'Header';
+  margin-left: 15%;
+  width: 70%;
+}
 
 .pokemonImage {
   image-rendering: pixelated;
@@ -38,6 +47,16 @@ html {
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #8f54a0;
+  border-radius: 15px;
+  border: 3px none #ffffff;
 }
 
 *::-webkit-scrollbar-track {
@@ -88,11 +107,9 @@ body {
   text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.642);
   background-image: url('./background.png');
   background-size: cover;
-  /* Ensure the background covers the entire viewport */
   background-repeat: no-repeat;
-  /* Prevent background image from repeating */
-  margin: 0px;
-}
+  /* Ensure the background covers the entire viewport */
+
 
 
 .pokemonBackground {
@@ -101,11 +118,49 @@ body {
   background-size: cover;
   width: 100vw;
   height: 100vh;
+}
+
+.enemy-pokemon,
+.player-pokemon {
+  position: absolute;
   text-align: center;
+  width: 20%;
+  height: 20%;
 }
 
 .enemy-pokemon {
-  position: absolute;
-  left: 58%;
-  top: 35%;
+  left: 57%;
+  top: 28%;
+}
+
+.player-pokemon {
+  left: 22%;
+  top: 55%;
+}
+
+.enemy-pokemon img,
+.player-pokemon img {
+  width: 80%;
+  height: 80%;
+  image-rendering: pixelated;
+  border-radius: 16px;
+}
+
+.no-location {
+  text-align: center;
+  position: relative;
+  top: 60px;
+}
+
+.no-location button {
+  margin: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+iframe {
+  width: 480px;
+  height: 359px;
+  margin-bottom: 25.728px;
 }

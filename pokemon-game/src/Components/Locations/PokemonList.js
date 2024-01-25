@@ -6,12 +6,10 @@ function PokemonList(props) {
         return name;
     }
 
-    return (<div className="grid-parent">
+    return (<>
         {
-
             pokemons.map((p) =>
-                <div key={prepareName(p.name)}className="glass">
-
+                <div key={prepareName(p.name)} className="glass">
                     <img className="pokemonImage" src={p["sprites"]["front_default"]} alt="PokemonImage"></img>
                     <h2>{prepareName(p.name)}</h2>
                     {props.onClick && (
@@ -21,6 +19,6 @@ function PokemonList(props) {
             )
         }
 
-    </div>)
+    </>)
 }
 export default PokemonList;

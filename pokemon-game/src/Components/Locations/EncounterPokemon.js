@@ -24,7 +24,6 @@ function EncounterPokemon(props) {
 
     }, [choosenPokemon, encounterPokemon])
 
-
     function handleChoosePokemon(p) {
         setChoosenPokemon(p);
         setChoosenPokemonHp(p.stats[0].base_stat);
@@ -49,8 +48,10 @@ function EncounterPokemon(props) {
     }
 
     return (
-        <div className="pokemonBackground">
+
+
             <div className="grid-parent">
+              <div calssName='pokemonBackground'>
                 {encounterPokemon && encounterPokemon.name && encounterPokemon["sprites"]["front_default"] &&
                     (
                         choosenPokemonHp && encounterPokemonHp ? (
@@ -79,8 +80,8 @@ function EncounterPokemon(props) {
 
                         )
                     )}
+                 </div>
             </div>
-        </div >)
 }
 
 export default EncounterPokemon;

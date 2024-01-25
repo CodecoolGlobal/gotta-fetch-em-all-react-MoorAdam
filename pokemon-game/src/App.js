@@ -1,7 +1,6 @@
 import './App.css';
 import LocationList from './Components/Locations/LocationList';
 import { useEffect, useState } from "react";
-import PokemonList from './Components/Locations/PokemonList';
 import EncounterPokemon from './Components/Locations/EncounterPokemon';
 
 

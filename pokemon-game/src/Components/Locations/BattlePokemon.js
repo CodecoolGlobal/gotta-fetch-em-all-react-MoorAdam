@@ -1,20 +1,5 @@
-import { useState } from "react"
-
-function HpBar() {
-    return (
-        <div>
-            <div class="health-bar" data-total="1000" data-value="1000">
-                <div class="bar">
-                    <div class="hit"></div>
-                </div>
-            </div>
-            <br />
-        </div>
-    )
-}
-
 function BattlePokemon(props) {
-    const [pokemon, setPokemon] = useState(props.pokemon);
+    const pokemon = props.pokemon;
 
     function prepareName(name) {
         if (name) {
@@ -30,13 +15,13 @@ function BattlePokemon(props) {
                 <div className="enemy-pokemon">
                     <h3>{prepareName(pokemon.name)}</h3>
                     <h3>hp: {props.hp}</h3>
-                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.front_default}></img>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.front_default} alt="pokemonImage"></img>
                 </div> :
                 <div className="player-pokemon">
                     <h3>{prepareName(pokemon.name)}</h3>
                     <h3>hp: {props.hp}</h3>
-                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.back_default}></img>
-                </div>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.back_default} alt="pokemonImage"></img>
+                </div >
             }
         </>
     );

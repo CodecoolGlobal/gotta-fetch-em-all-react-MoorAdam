@@ -11,8 +11,6 @@ function EncounterPokemon(props) {
 	const [choosenPokemonHp, setChoosenPokemonHp] = useState();
 	const [encounterPokemonHp, setEncounterPokemonHp] = useState();
 
-	const [gameState, setGameState] = useState('attack');
-
 	useEffect(() => {
 
 		if (choosenPokemon && encounterPokemon) {

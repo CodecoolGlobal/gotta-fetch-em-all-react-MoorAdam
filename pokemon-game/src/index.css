@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .glass {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.11);
@@ -20,29 +24,31 @@
 
 .pokemonImage {
   image-rendering: pixelated;
+  width: 80%;
+  height: 50%;
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #8f54a0 #ffffff;
-  }
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8f54a0 #ffffff;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 10px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #8f54a0;
-    border-radius: 15px;
-    border: 3px none #ffffff;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #8f54a0;
+  border-radius: 15px;
+  border: 3px none #ffffff;
+}
 
 img {
   width: 80%;
@@ -50,19 +56,18 @@ img {
   border-radius: 16px;
 }
 
-.locationImg{
+.locationImg {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.297);
 
 }
 
 button {
   color: white;
-  /* From https://css.glass */
   background: rgba(165, 94, 235, 0.505);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(14.1px);
-  -webkit-backdrop-filter: blur(14.1px);
+  /* backdrop-filter: blur(14.1px); */
+  /* -webkit-backdrop-filter: blur(14.1px); */
   width: 60%;
   margin: 10%;
   padding: 15px;
@@ -74,9 +79,8 @@ button {
     monospace;
   color: white;
   font-weight: bold;
-
-
 }
+
 body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   color: white;
@@ -84,15 +88,25 @@ body {
   font-weight: bold;
   text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.642);
   background-image: url('./background.png');
-  background-size: cover; /* Ensure the background covers the entire viewport */
-  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-size: cover;
+  /* Ensure the background covers the entire viewport */
+  background-repeat: no-repeat;
+  /* Prevent background image from repeating */
   margin: 0px;
 }
 
 
 .pokemonBackground {
+  position: relative;
   background-image: url('battle-screen.jpg');
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  text-align: center;
+}
+
+.enemy-pokemon {
+  position: absolute;
+  left: 58%;
+  top: 28%;
 }

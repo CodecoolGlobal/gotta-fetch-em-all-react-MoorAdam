@@ -82,12 +82,12 @@ function App() {
     return data.pokemon_encounters[randomEncounterIndexNumber].pokemon.url;
   }
 
-/*   function handleEncounterPokemonButton() {
-    console.log('Clicked on the encounter Pokemon');
-  } */
+  /*   function handleEncounterPokemonButton() {
+      console.log('Clicked on the encounter Pokemon');
+    } */
 
   function handleBackToMapSelection() {
-    setPageState("locations");
+    setPageState("asd");
   }
 
   return (

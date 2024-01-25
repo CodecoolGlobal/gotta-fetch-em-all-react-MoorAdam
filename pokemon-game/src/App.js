@@ -107,7 +107,7 @@ function App() {
           <button onClick={handleBackToMapSelection}>Select a New Map</button>
         </div>
       ) : (
-        <PokemonList pokemonList={pokemonList}></PokemonList>
+        <h1>asd</h1>
       )}
     </div>
   );

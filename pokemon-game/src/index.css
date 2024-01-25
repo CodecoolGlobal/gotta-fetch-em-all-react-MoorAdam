@@ -116,17 +116,17 @@ body {
   position: absolute;
   text-align: center;
   width: 20%;
-  height: 20%;
+  height: 30%;
 }
 
 .enemy-pokemon {
   left: 57%;
-  top: 28%;
+  top: 23%;
 }
 
 .player-pokemon {
   left: 22%;
-  top: 55%;
+  top: 50%;
 }
 
 .enemy-pokemon img,
@@ -154,4 +154,27 @@ iframe {
   width: 480px;
   height: 359px;
   margin-bottom: 25.728px;
+}
+
+.buttons button {
+  background-color: black;
+  width: 90%;
+  color: white;
+  background: rgba(165, 94, 235, 0.505);
+  border-radius: 16px;
+  margin: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* backdrop-filter: blur(14.1px); */
+  /* -webkit-backdrop-filter: blur(14.1px); */
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  display: block;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  font-weight: bold;
+}
+
+.buttons{
+  position: absolute;
+  top: 10px;
 }

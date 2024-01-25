@@ -49,35 +49,37 @@ function EncounterPokemon(props) {
 
 	return (
 		<>
-			{encounterPokemon && encounterPokemon.name && encounterPokemon["sprites"]["front_default"] &&
-				(
-					choosenPokemonHp && encounterPokemonHp ? (
-						choosenPokemonHp <= 0 ? (
-							<div>
-								<p>fainted</p>
-							</div>
-						) : encounterPokemonHp <= 0 ? (
-							<div>
-								win
-							</div>
-						) : (
-							<div className="pokemonBackground">
-								<BattlePokemon type={"enemy"} hp={encounterPokemonHp} pokemon={encounterPokemon}></BattlePokemon>
-								<BattlePokemon type={"player"} hp={choosenPokemonHp} pokemon={choosenPokemon}></BattlePokemon>
+			{encounterPokemon && encounterPokemon.name && encounterPokemon.sprites.front_default && (
+				choosenPokemonHp && encounterPokemonHp ? (
+					choosenPokemonHp <= 0 ? (
+						<div>
+							<p>fainted</p>
+						</div>
+					) : encounterPokemonHp <= 0 ? (
+						<div>
+							win
+						</div>
+					) : (
+						<>
+							<div className="pokemonBackground"></div>
+							<BattlePokemon type={"enemy"} hp={encounterPokemonHp} pokemon={encounterPokemon}></BattlePokemon>
+							<BattlePokemon type={"player"} hp={choosenPokemonHp} pokemon={choosenPokemon}></BattlePokemon>
+							<div className="buttons">
 								<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>Win</button>
 								<button onClick={() => (attack(encounterPokemon, choosenPokemon, choosenPokemonHp, setChoosenPokemonHp))}>Defend</button>
-								<button onClick={() => (attack(choosenPokemon, encounterPokemon, encounterPokemonHp, setEncounterPokemonHp))}>attack</button>
+								<button onClick={() => (attack(choosenPokemon, encounterPokemon, encounterPokemonHp, setEncounterPokemonHp))}>Attack</button>
 							</div>
-						)
-					) : (
-						<div className="grid-pokemon-list">
-							<PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
-						</div>
-
+						</>
 					)
-				)}
+				) : (
+					<div className="grid-pokemon-list">
+						<PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
+					</div>
+				)
+			)}
 		</>
-	)
+	);
+
 }
 
 export default EncounterPokemon;

@@ -52,16 +52,19 @@ function EncounterPokemon(props) {
 	return (
 		<>
 			{encounterPokemon && encounterPokemon.name && encounterPokemon.sprites.front_default && (
-				choosenPokemonHp && encounterPokemonHp ? (
+				choosenPokemonHp !==undefined && encounterPokemonHp !== undefined ? (
 					choosenPokemonHp <= 0 ? (
-						<div>
-							<p>fainted</p>
-							<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>back</button>
+						<div className="lost-page">
+							<h3>You lost the game!</h3>
+							<iframe src="https://giphy.com/embed/5ElYrjwcesoeY" title='lost-gif'></iframe>
+							<button onClick={() => (props.back())}>Back To The Home Page</button>
 						</div>
 					) : encounterPokemonHp <= 0 ? (
-						<div>
-							win
-							<button onClick={() => (props.back())}>back</button>
+						<div className="won-page">
+							<h3>You won the game!</h3>
+							<iframe src="https://giphy.com/embed/1dMNqVx9Kb12EBjFrc" title='won-gif'></iframe>
+							<h3>The pokemon has enterd to your collection!</h3>
+							<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>Back To The Home Page</button>
 						</div>
 					) : (
 						<>
@@ -69,7 +72,6 @@ function EncounterPokemon(props) {
 							<BattlePokemon type={"enemy"} hp={encounterPokemonHp} pokemon={encounterPokemon}></BattlePokemon>
 							<BattlePokemon type={"player"} hp={choosenPokemonHp} pokemon={choosenPokemon}></BattlePokemon>
 							<div className="buttons">
-								<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>Win</button>
 								<button onClick={() => (attack(encounterPokemon, choosenPokemon, choosenPokemonHp, setChoosenPokemonHp))}>Defend</button>
 								<button onClick={() => (attack(choosenPokemon, encounterPokemon, encounterPokemonHp, setEncounterPokemonHp))}>Attack</button>
 							</div>

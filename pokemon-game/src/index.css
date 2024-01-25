@@ -178,3 +178,30 @@ iframe {
   position: absolute;
   top: 10px;
 }
+
+.won-page{
+  text-align: center;
+  position: relative;
+  top: 60px;
+}
+
+.won-page button{
+  margin: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lost-page{
+  text-align: center;
+  position: relative;
+  top: 60px;
+}
+
+.lost-page button{
+  margin: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  margin-left: auto;
+  margin-right: auto;
+}
+

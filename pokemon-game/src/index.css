@@ -9,9 +9,40 @@
   text-align: center;
 }
 
-.pokemonImage{
+.grid-parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 280px));
+  gap: 30px;
+  place-content: center;
+  grid-template-areas: 'Header';
+}
+
+
+.pokemonImage {
   image-rendering: pixelated;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #8f54a0 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #8f54a0;
+    border-radius: 15px;
+    border: 3px none #ffffff;
+  }
 
 img {
   width: 80%;
@@ -42,25 +73,18 @@ button {
 
 
 }
-
-.grid-parent {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 280px));
-  gap: 30px;
-  place-content: center;
-}
-
 body {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   color: white;
   font-size: larger;
   font-weight: bold;
   text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.642);
   background-image: url('./background.png');
-  background-size: 100vw 100%;
+  background-size: cover; /* Ensure the background covers the entire viewport */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
   margin: 0px;
 }
+
 
 .pokemonBackground {
   background-image: url('battle-screen.jpg');

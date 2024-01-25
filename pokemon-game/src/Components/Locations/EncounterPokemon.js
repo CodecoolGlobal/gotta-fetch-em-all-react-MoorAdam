@@ -44,44 +44,46 @@ function EncounterPokemon(props) {
 		console.log('putting pokemon into team');
 		const updateTeam = props.updateTeam;
 		updateTeam(p);
-        props.back()
+		props.back()
 	}
+
+	// 
 
 	return (
 		<>
-			{encounterPokemon && encounterPokemon.name && encounterPokemon["sprites"]["front_default"] &&
-				(
-					choosenPokemonHp && encounterPokemonHp ? (
-						choosenPokemonHp <= 0 ? (
-							<div>
-                                fainted
-								<button onClick={() => (props.back())}>back</button>
-							</div>
-						) : encounterPokemonHp <= 0 ? (
-							<div>
-								win
-                                
-                                <button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>back</button>
-							</div>
-						) : (
-							<div className="pokemonBackground">
-								<BattlePokemon type={"enemy"} hp={encounterPokemonHp} pokemon={encounterPokemon}></BattlePokemon>
-								<BattlePokemon type={"player"} hp={choosenPokemonHp} pokemon={choosenPokemon}></BattlePokemon>
-								
-								<button onClick={() => (attack(encounterPokemon, choosenPokemon, choosenPokemonHp, setChoosenPokemonHp))}>Defend</button>
-								<button onClick={() => (attack(choosenPokemon, encounterPokemon, encounterPokemonHp, setEncounterPokemonHp))}>attack</button>
-							</div>
-						)
-					) : (
-						<div className="grid-pokemon-list">
-							<PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
-                            <button onClick={() => (props.back())}>back</button>
+			{encounterPokemon && encounterPokemon.name && encounterPokemon.sprites.front_default && (
+				choosenPokemonHp && encounterPokemonHp ? (
+					choosenPokemonHp <= 0 ? (
+						<div>
+							<p>fainted</p>
+							<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>back</button>
 						</div>
-
+					) : encounterPokemonHp <= 0 ? (
+						<div>
+							win
+							<button onClick={() => (props.back())}>back</button>
+						</div>
+					) : (
+						<>
+							<div className="pokemonBackground"></div>
+							<BattlePokemon type={"enemy"} hp={encounterPokemonHp} pokemon={encounterPokemon}></BattlePokemon>
+							<BattlePokemon type={"player"} hp={choosenPokemonHp} pokemon={choosenPokemon}></BattlePokemon>
+							<div className="buttons">
+								<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>Win</button>
+								<button onClick={() => (attack(encounterPokemon, choosenPokemon, choosenPokemonHp, setChoosenPokemonHp))}>Defend</button>
+								<button onClick={() => (attack(choosenPokemon, encounterPokemon, encounterPokemonHp, setEncounterPokemonHp))}>Attack</button>
+							</div>
+						</>
 					)
-				)}
+				) : (
+					<div className="grid-pokemon-list">
+						<PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
+					</div>
+				)
+			)}
 		</>
-	)
+	);
+
 }
 
 export default EncounterPokemon;

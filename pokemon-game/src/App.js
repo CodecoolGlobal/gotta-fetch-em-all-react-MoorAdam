@@ -114,7 +114,7 @@ function App() {
           <button onClick={handleBackToMapSelection}>Select a New Map</button>
         </div>
       ) : (
-        <h1>asd</h1>
+        <h1>Something went wrong!</h1>
       )}
     </div>
   );

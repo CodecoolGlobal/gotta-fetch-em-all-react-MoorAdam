@@ -10,11 +10,11 @@ function PokemonList(props) {
         {
 
             pokemons.map((p) =>
-                <div className="glass">
+                <div key={prepareName(p.name)}className="glass">
 
                     <img className="pokemonImage" src={p["sprites"]["front_default"]} alt="PokemonImage"></img>
                     <h2>{prepareName(p.name)}</h2>
-                    {props.onClick && (
+                    {!props.onClick && (
                         <button onClick={props.onClick}>Choose!</button>
                     )}
                 </div>

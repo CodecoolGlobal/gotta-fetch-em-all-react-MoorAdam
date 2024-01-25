@@ -44,7 +44,7 @@ function EncounterPokemon(props) {
 		console.log('putting pokemon into team');
 		const updateTeam = props.updateTeam;
 		updateTeam(p);
-		//props.back();
+        props.back()
 	}
 
 	return (
@@ -54,17 +54,20 @@ function EncounterPokemon(props) {
 					choosenPokemonHp && encounterPokemonHp ? (
 						choosenPokemonHp <= 0 ? (
 							<div>
-								<p>fainted</p>
+                                fainted
+								<button onClick={() => (props.back())}>back</button>
 							</div>
 						) : encounterPokemonHp <= 0 ? (
 							<div>
 								win
+                                
+                                <button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>back</button>
 							</div>
 						) : (
 							<div className="pokemonBackground">
 								<BattlePokemon type={"enemy"} hp={encounterPokemonHp} pokemon={encounterPokemon}></BattlePokemon>
 								<BattlePokemon type={"player"} hp={choosenPokemonHp} pokemon={choosenPokemon}></BattlePokemon>
-								<button onClick={() => (putEncounterPokemonIntoTeam(encounterPokemon))}>Win</button>
+								
 								<button onClick={() => (attack(encounterPokemon, choosenPokemon, choosenPokemonHp, setChoosenPokemonHp))}>Defend</button>
 								<button onClick={() => (attack(choosenPokemon, encounterPokemon, encounterPokemonHp, setEncounterPokemonHp))}>attack</button>
 							</div>
@@ -72,6 +75,7 @@ function EncounterPokemon(props) {
 					) : (
 						<div className="grid-pokemon-list">
 							<PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
+                            <button onClick={() => (props.back())}>back</button>
 						</div>
 
 					)

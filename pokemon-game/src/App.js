@@ -86,12 +86,20 @@ function App() {
 
   function updateTeam(p){
     console.log('updating team with '+p);
-    setPokemonList((prevList) => [...prevList], p)
+    setPokemonList((prevList) => [...prevList, p]);
     console.log(pokemonList);
   }
 
-  function handleBackToMapSelection() {
+  async function handleBackToMapSelection() {
     setPageState("locations");
+  
+    try {
+      const response = await fetch('https://pokeapi.co/api/v2/location');
+      const data = await response.json();
+      setLocations(data);
+    } catch (error) {
+      console.error('Error fetching locations:', error);
+    }
   }
 
   return (
@@ -99,7 +107,7 @@ function App() {
       {pageState === "locations" ? (
         <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
       ) : pageState === "pokemonList" ? (
-        <EncounterPokemon back={()=>{setPageState('locations')}} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
+        <EncounterPokemon back={handleBackToMapSelection} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (
         <div className='no-location'>
           <h1>This location doesn't seem to have any pokémon.</h1>

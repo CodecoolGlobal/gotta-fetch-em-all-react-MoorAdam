@@ -22,6 +22,7 @@ function App() {
 
   useEffect(() => {
     async function getPokemons() {
+      console.log('fetching pokemon');
       const pokePromisses = usersPokemon.map(p => {
         const promis = fetch(p)
           .then((promis) => promis.json())
@@ -35,7 +36,7 @@ function App() {
 
     }
     getPokemons();
-  }, [])
+  }, [!pokemonList])
 
   useEffect(() => {
     async function fetchData() {
@@ -82,9 +83,11 @@ function App() {
     return data.pokemon_encounters[randomEncounterIndexNumber].pokemon.url;
   }
 
-/*   function handleEncounterPokemonButton() {
-    console.log('Clicked on the encounter Pokemon');
-  } */
+  function updateTeam(p){
+    console.log('updating team with '+p);
+    setPokemonList((prevList) => [...prevList], p)
+    console.log(pokemonList);
+  }
 
   function handleBackToMapSelection() {
     setPageState("locations");
@@ -95,7 +98,7 @@ function App() {
       {pageState === "locations" ? (
         <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
       ) : pageState === "pokemonList" ? (
-        <EncounterPokemon pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
+        <EncounterPokemon back={()=>{setPageState('locations')}} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (
         <>
           <h1>This location doesn't seem to have any pokémon.</h1>
@@ -107,7 +110,5 @@ function App() {
     </div>
   );
 }
-
-//<button onClick={() => (getPokemons())}>Pokemon</button>
 
 export default App;

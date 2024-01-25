@@ -19,7 +19,6 @@ function HpBar() {
 function BattlePokemon(props) {
 
     const [pokemon, setPokemon] = useState(props.pokemon)
-    const [hp, setHp] = useState()
 
     return (
         <div>
@@ -27,10 +26,12 @@ function BattlePokemon(props) {
             {props.type === "enemy" ?
                 <div className="enemyPokemon">
                     <h3>{pokemon.name}</h3>
+                    <h3>hp: {props.hp}</h3>
                     <img src={pokemon.sprites.other.showdown.front_default}></img>
                 </div> :
                 <div className="playerPokemon">
                     <h3>{pokemon.name}</h3>
+                    <h3>hp: {props.hp}</h3>
                     <img src={pokemon.sprites.other.showdown.back_default}></img>
                 </div>
             }

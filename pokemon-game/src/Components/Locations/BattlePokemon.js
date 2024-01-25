@@ -17,6 +17,7 @@ function BattlePokemon(props) {
     const [pokemon, setPokemon] = useState(props.pokemon);
     const [hp, setHp] = useState();
 
+
     function prepareName(name) {
         if (name) {
             name = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -24,16 +25,22 @@ function BattlePokemon(props) {
         return name;
     }
 
+    const [pokemon, setPokemon] = useState(props.pokemon)
+
+
     return (
         <>
             {props.type === "enemy" ?
+
                 <div className="enemy-pokemon">
                     <h3>{prepareName(pokemon.name)}</h3>
-                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.front_default} alt="enemyPokemon"></img>
+                    <h3>hp: {props.hp}</h3>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.front_default}></img>
                 </div> :
                 <div className="player-pokemon">
                     <h3>{prepareName(pokemon.name)}</h3>
-                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.back_default} alt="playerPokemon"></img>
+                    <h3>hp: {props.hp}</h3>
+                    <img className="pokemonImage" src={pokemon.sprites.other.showdown.back_default}></img>
                 </div>
             }
         </>

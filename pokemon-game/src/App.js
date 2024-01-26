@@ -48,38 +48,14 @@ function App() {
 
   async function fetchData(URL) {
     const response = await fetch(URL);
-    const responseJSON = await response.json();
-    return responseJSON;
+    const data = await response.json();
+    return data;
   }
 
-  async function onClickVisitMap(locationName) {
+  async function handleClickVisitMap(encounterPokemon) {
     setPageState("pokemonList");
-
-    const selectedLocationJSON = await fetchData(`https://pokeapi.co/api/v2/location/${locationName}`);
-
-    if (selectedLocationJSON.areas.length === 0) {
-      setPageState("noEncounterPokemon");
-      return;
-    }
-
-    const randomAreaURL = getRandomArea(selectedLocationJSON);
-    const selectedAreaJSON = await fetchData(randomAreaURL);
-
-    console.log(selectedAreaJSON);
-    const randomEncounterPokemon = getRandomEncounterPokemon(selectedAreaJSON);
-    const encounterPokemonJSON = await fetchData(randomEncounterPokemon);
-    setEncounterPokemon(encounterPokemonJSON);
+    setEncounterPokemon(encounterPokemon);
     setLocations([]);
-  }
-
-  function getRandomArea(data) {
-    const randomAreaNumber = Math.floor(Math.random() * data.areas.length);
-    return data.areas[randomAreaNumber].url;
-  }
-
-  function getRandomEncounterPokemon(data) {
-    const randomEncounterIndexNumber = Math.floor(Math.random() * data.pokemon_encounters.length);
-    return data.pokemon_encounters[randomEncounterIndexNumber].pokemon.url;
   }
 
 
@@ -104,7 +80,7 @@ function App() {
   return (
     <div className="App">
       {pageState === "locations" ? (
-        <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
+        <LocationList onClick={handleClickVisitMap} locations={locations}></LocationList>
       ) : pageState === "pokemonList" ? (
         <EncounterPokemon back={handleBackToMapSelection} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (

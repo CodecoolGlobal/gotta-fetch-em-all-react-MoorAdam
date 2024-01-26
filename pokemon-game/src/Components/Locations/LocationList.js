@@ -1,6 +1,28 @@
+
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 function LocationList(props) {
     const locations = props.locations;
-    const handleOnClick = props.onClick;
+
+
+    const handleOnClick = async (locationName) => {
+        const selectedLocation = await fetchData(`https://pokeapi.co/api/v2/location/${locationName}`);
+
+        if (selectedLocation.areas.length === 0) {
+            setPageState("noEncounterPokemon");
+            return;
+        }
+
+        const randomAreaURL = getRandomElement(selectedLocation.areas).url;
+        const selectedArea = await fetchData(randomAreaURL);
+
+        console.log(selectedArea);
+        const randomEncounterPokemon = getRandomElement(selectedArea.pokemon_encounters).pokemon.url;
+        const encounterPokemon = await fetchData(randomEncounterPokemon);
+        props.onClick(encounterPokemon);
+    };
     function prepareName(name) {
         name = name.substring(0, 1).toUpperCase() + name.substring(1);
         name = name.replaceAll('-', ' ');

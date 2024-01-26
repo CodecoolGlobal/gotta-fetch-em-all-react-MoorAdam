@@ -2,7 +2,7 @@ import './App.css';
 import LocationList from './Components/Locations/LocationList';
 import { useEffect, useState } from "react";
 import EncounterPokemon from './Components/Locations/EncounterPokemon';
-
+import NoLocation from './Components/Locations/NoLocation';
 
 function App() {
 
@@ -108,11 +108,7 @@ function App() {
       ) : pageState === "pokemonList" ? (
         <EncounterPokemon back={handleBackToMapSelection} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (
-        <div className='no-location'>
-          <h1>This location doesn't seem to have any pokémon.</h1>
-          <iframe src="https://giphy.com/embed/26gJzump2Q03pbOmc" title="pokemon"></iframe>
-          <button onClick={handleBackToMapSelection}>Select a New Map</button>
-        </div>
+        <NoLocation handleBackToMapSelection={handleBackToMapSelection}></NoLocation>
       ) : (
         <h1>Something went wrong!</h1>
       )}

@@ -1,9 +1,8 @@
 import './App.css';
 import LocationList from './Components/Locations/LocationList';
 import { useEffect, useState } from "react";
-import PokemonList from './Components/Locations/PokemonList';
-
-
+import EncounterPokemon from './Components/Locations/EncounterPokemon';
+import NoLocation from './Components/Locations/NoLocation';
 
 function App() {
 
@@ -22,6 +21,7 @@ function App() {
 
   useEffect(() => {
     async function getPokemons() {
+      console.log('fetching pokemon');
       const pokePromisses = usersPokemon.map(p => {
         const promis = fetch(p)
           .then((promis) => promis.json())
@@ -30,12 +30,12 @@ function App() {
       Promise.all(pokePromisses)
         .then((nextPromis) => {
           setPokemonList(nextPromis)
-          console.log(nextPromis);
+          //console.log(nextPromis);
         })
 
     }
     getPokemons();
-  }, ([]))
+  }, [!pokemonList])
 
   useEffect(() => {
     async function fetchData() {
@@ -46,41 +46,74 @@ function App() {
     fetchData();
   }, []);
 
+  async function fetchData(URL) {
+    const response = await fetch(URL);
+    const responseJSON = await response.json();
+    return responseJSON;
+  }
 
   async function onClickVisitMap(locationName) {
     setPageState("pokemonList");
-    setLocations([]);
 
-    const locationResponse = await fetch(`https://pokeapi.co/api/v2/location/${locationName}`);
-    const selectedLocationJSON = await locationResponse.json();
+    const selectedLocationJSON = await fetchData(`https://pokeapi.co/api/v2/location/${locationName}`);
+
+    if (selectedLocationJSON.areas.length === 0) {
+      setPageState("noEncounterPokemon");
+      return;
+    }
 
     const randomAreaURL = getRandomArea(selectedLocationJSON);
-    const randomAreaResponse = await fetch(randomAreaURL);
-    const SelectedAreaJSON = await randomAreaResponse.json();
-    setEncounterPokemon(SelectedAreaJSON.pokemon_encounters);
-    console.log(SelectedAreaJSON.pokemon_encounters);
+    const selectedAreaJSON = await fetchData(randomAreaURL);
+
+    console.log(selectedAreaJSON);
+    const randomEncounterPokemon = getRandomEncounterPokemon(selectedAreaJSON);
+    const encounterPokemonJSON = await fetchData(randomEncounterPokemon);
+    setEncounterPokemon(encounterPokemonJSON);
+    setLocations([]);
   }
 
   function getRandomArea(data) {
     const randomAreaNumber = Math.floor(Math.random() * data.areas.length);
-    const randomAreaURL = data.areas[randomAreaNumber].url;
-    return randomAreaURL;
+    return data.areas[randomAreaNumber].url;
+  }
+
+  function getRandomEncounterPokemon(data) {
+    const randomEncounterIndexNumber = Math.floor(Math.random() * data.pokemon_encounters.length);
+    return data.pokemon_encounters[randomEncounterIndexNumber].pokemon.url;
+  }
+
+
+  function updateTeam(p){
+    console.log('updating team with '+p);
+    setPokemonList((prevList) => [...prevList, p]);
+    console.log(pokemonList);
+  }
+
+  async function handleBackToMapSelection() {
+    setPageState("locations");
+  
+    try {
+      const response = await fetch('https://pokeapi.co/api/v2/location');
+      const data = await response.json();
+      setLocations(data);
+    } catch (error) {
+      console.error('Error fetching locations:', error);
+    }
   }
 
   return (
-    <div className="App" >
-
-      {
-        pageState === "locations" ? (
-          <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
-        ) : pageState === "pokemonList" ?
-          (<PokemonList pokemonList={pokemonList}></PokemonList>) :
-          ('battle PLACEHOLDER')
-      }
+    <div className="App">
+      {pageState === "locations" ? (
+        <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
+      ) : pageState === "pokemonList" ? (
+        <EncounterPokemon back={handleBackToMapSelection} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
+      ) : pageState === "noEncounterPokemon" ? (
+        <NoLocation handleBackToMapSelection={handleBackToMapSelection}></NoLocation>
+      ) : (
+        <h1>Something went wrong!</h1>
+      )}
     </div>
   );
 }
-
-//<button onClick={() => (getPokemons())}>Pokemon</button>
 
 export default App;

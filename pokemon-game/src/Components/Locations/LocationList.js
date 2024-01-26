@@ -7,12 +7,12 @@ function LocationList(props) {
         return name;
     }
 
-    return (<div className="locationList, grid-parent">
+    return (<div className="grid-parent">
 
         {locations.results && locations.results.map(
             location =>
                 <div className="glass" key={location.name}>
-                    <img alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
+                    <img className={'locationImg'} alt={location.name + ".jpg"} src={"./Assets/" + location.name + ".jpg"} />
                     {prepareName(location.name)}
                     <button onClick={() => { handleOnClick(location.name) }}>Visit</button>
                 </div>)}

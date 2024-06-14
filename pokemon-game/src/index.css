@@ -3,7 +3,6 @@ html {
 }
 
 .glass {
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.11);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -11,11 +10,13 @@ html {
   -webkit-backdrop-filter: blur(14.1px);
   border: 1px solid rgba(255, 255, 255, 0.29);
   text-align: center;
+  min-width: 200px;
 }
 
 .grid-parent {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 280px));
+  margin: 3%;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
   gap: 30px;
   place-content: center;
   grid-template-areas: 'Header';
@@ -23,12 +24,17 @@ html {
 
 .grid-pokemon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 280px));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
   gap: 30px;
-  place-content: center;
-  grid-template-areas: 'Header';
-  margin-left: 15%;
-  width: 70%;
+  margin: 3%;
+  justify-content: center;
+}
+
+.pokemon-list-wrapper {
+  width: 100%;
+  min-width: 200px;
+  display: block;
+  justify-content: center;
 }
 
 .pokemonImage {
@@ -60,9 +66,12 @@ html {
 }
 
 img {
-  width: 80%;
-  margin: 20px;
+  width: 90%;
   border-radius: 16px;
+  margin: 18px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .locationImg {
@@ -75,8 +84,6 @@ button {
   background: rgba(165, 94, 235, 0.505);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  /* backdrop-filter: blur(14.1px); */
-  /* -webkit-backdrop-filter: blur(14.1px); */
   width: 60%;
   margin: 10%;
   padding: 15px;
@@ -99,16 +106,22 @@ body {
   background-image: url('./background.png');
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 0px;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
 }
 
 
 .pokemonBackground {
   position: relative;
+  top: 0;
+  left: 0;
   background-image: url('battle-screen.jpg');
   background-size: cover;
+  background-position: center;
   width: 100vw;
   height: 100vh;
+  z-index: -1;
 }
 
 .enemy-pokemon,
@@ -164,8 +177,6 @@ iframe {
   border-radius: 16px;
   margin: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  /* backdrop-filter: blur(14.1px); */
-  /* -webkit-backdrop-filter: blur(14.1px); */
   padding: 15px;
   border: 1px solid rgba(255, 255, 255, 0.29);
   display: block;
@@ -174,34 +185,33 @@ iframe {
   font-weight: bold;
 }
 
-.buttons{
+.buttons {
   position: absolute;
   top: 10px;
 }
 
-.won-page{
+.won-page {
   text-align: center;
   position: relative;
   top: 60px;
 }
 
-.won-page button{
+.won-page button {
   margin: 0px;
   border: 1px solid rgba(255, 255, 255, 0.29);
   margin-left: auto;
   margin-right: auto;
 }
 
-.lost-page{
+.lost-page {
   text-align: center;
   position: relative;
   top: 60px;
 }
 
-.lost-page button{
+.lost-page button {
   margin: 0px;
   border: 1px solid rgba(255, 255, 255, 0.29);
   margin-left: auto;
   margin-right: auto;
 }
-

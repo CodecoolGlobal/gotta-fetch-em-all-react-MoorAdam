@@ -49,7 +49,7 @@ function EncounterPokemon(props) {
 	return (
 		<>
 			{encounterPokemon && encounterPokemon.name && encounterPokemon.sprites.front_default && (
-				choosenPokemonHp !==undefined && encounterPokemonHp !== undefined ? (
+				choosenPokemonHp !== undefined && encounterPokemonHp !== undefined ? (
 					choosenPokemonHp <= 0 ? (
 						<div className="lost-page">
 							<h3>You lost the game!</h3>
@@ -75,7 +75,7 @@ function EncounterPokemon(props) {
 						</>
 					)
 				) : (
-					<div className="grid-pokemon-list">
+					<div className="pokemon-list-wrapper">
 						<PokemonList pokemonList={props.pokemonList} onClick={handleChoosePokemon}></PokemonList>
 					</div>
 				)

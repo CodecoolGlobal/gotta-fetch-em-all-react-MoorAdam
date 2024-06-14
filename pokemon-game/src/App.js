@@ -5,24 +5,19 @@ import EncounterPokemon from './Components/Locations/EncounterPokemon';
 import NoLocation from './Components/Locations/NoLocation';
 
 function App() {
-
-  const usersPokemon = [
-    "https://pokeapi.co/api/v2/pokemon/bulbasaur",
-    "https://pokeapi.co/api/v2/pokemon/charizard",
-    "https://pokeapi.co/api/v2/pokemon/poliwhirl"
-  ]
-
-
   const [locations, setLocations] = useState([]);
   const [encounterPokemon, setEncounterPokemon] = useState([]);
   const [pageState, setPageState] = useState("locations");
-  const [pokemonList, setPokemonList] = useState([])
+  const [pokemonList, setPokemonList] = useState([]);
 
 
   useEffect(() => {
+    const userPokemon = ["https://pokeapi.co/api/v2/pokemon/bulbasaur",
+      "https://pokeapi.co/api/v2/pokemon/charizard",
+      "https://pokeapi.co/api/v2/pokemon/poliwhirl"];
     async function getPokemons() {
       console.log('fetching pokemon');
-      const pokePromisses = usersPokemon.map(p => {
+      const pokePromisses = userPokemon.map(p => {
         const promis = fetch(p)
           .then((promis) => promis.json())
         return promis
@@ -30,12 +25,12 @@ function App() {
       Promise.all(pokePromisses)
         .then((nextPromis) => {
           setPokemonList(nextPromis)
-          //console.log(nextPromis);
+          console.log(nextPromis);
         })
 
     }
     getPokemons();
-  }, [!pokemonList])
+  }, [])
 
   useEffect(() => {
     async function fetchData() {
@@ -83,15 +78,15 @@ function App() {
   }
 
 
-  function updateTeam(p){
-    console.log('updating team with '+p);
+  function updateTeam(p) {
+    console.log('updating team with ' + p);
     setPokemonList((prevList) => [...prevList, p]);
     console.log(pokemonList);
   }
 
   async function handleBackToMapSelection() {
     setPageState("locations");
-  
+
     try {
       const response = await fetch('https://pokeapi.co/api/v2/location');
       const data = await response.json();
@@ -104,7 +99,7 @@ function App() {
   return (
     <div className="App">
       {pageState === "locations" ? (
-        <LocationList onClick={onClickVisitMap} locations={locations}></LocationList>
+        <LocationList onClickVisitMap={onClickVisitMap} locations={locations}></LocationList>
       ) : pageState === "pokemonList" ? (
         <EncounterPokemon back={handleBackToMapSelection} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
       ) : pageState === "noEncounterPokemon" ? (

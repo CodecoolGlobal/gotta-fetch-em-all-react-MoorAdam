@@ -50,7 +50,6 @@ function BattleArena({ playerPokemon, randomArea, onHandlePageState, onHandleAdd
   }
 
 
-
   function setnewHpAfterAttack(prevHp, damage, winner) {
     const newHp = prevHp - damage;
     if (newHp <= 0) {

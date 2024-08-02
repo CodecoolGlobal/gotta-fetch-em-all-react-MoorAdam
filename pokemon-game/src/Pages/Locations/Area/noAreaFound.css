@@ -1,0 +1,32 @@
+.no-area-found {
+  text-align: center;
+  position: relative;
+  top: 60px;
+  min-width: 600px;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-area-found button {
+  margin: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
+  width: 33%;
+}
+
+.no-area-found h1 {
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+iframe {
+  border: none;
+  min-width: 450px;
+  width: 40%;
+  height: 350px;
+  margin-bottom: 30px;
+  pointer-events: none;
+}

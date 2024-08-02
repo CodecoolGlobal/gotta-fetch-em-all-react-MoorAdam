@@ -1,113 +1,79 @@
+import { useEffect, useState } from 'react';
 import './App.css';
-import LocationList from './Components/Locations/LocationList';
-import { useEffect, useState } from "react";
-import EncounterPokemon from './Components/Locations/EncounterPokemon';
-import NoLocation from './Components/Locations/NoLocation';
+import LocationList from './Pages/Locations/LocationList';
+import NoAreaFound from './Pages/Locations/Area/NoAreaFound';
+import PokemonList from './Pages/Pokemons/PokemonList';
+import BattleArena from './Pages/Battle/BattleArena';
+
+async function fetchPokemon(pokemonURL) {
+  const response = await fetch(pokemonURL);
+  return await response.json();
+}
 
 function App() {
-  const [locations, setLocations] = useState([]);
-  const [encounterPokemon, setEncounterPokemon] = useState([]);
-  const [pageState, setPageState] = useState("locations");
-  const [pokemonList, setPokemonList] = useState([]);
+  const [pageState, setPageState] = useState("locationList");
+  const [playerPokemon, setPlayerPokemon] = useState(null);
+  const [randomArea, setRandomArea] = useState(null);
+  const [pokemons, setPokemons] = useState([]);
 
 
   useEffect(() => {
-    const userPokemon = ["https://pokeapi.co/api/v2/pokemon/bulbasaur",
+    const defaultPokemonsURL = [
+      "https://pokeapi.co/api/v2/pokemon/bulbasaur",
       "https://pokeapi.co/api/v2/pokemon/charizard",
-      "https://pokeapi.co/api/v2/pokemon/poliwhirl"];
-    async function getPokemons() {
-      console.log('fetching pokemon');
-      const pokePromisses = userPokemon.map(p => {
-        const promis = fetch(p)
-          .then((promis) => promis.json())
-        return promis
-      })
-      Promise.all(pokePromisses)
-        .then((nextPromis) => {
-          setPokemonList(nextPromis)
-          console.log(nextPromis);
-        })
+      "https://pokeapi.co/api/v2/pokemon/poliwhirl"
+    ];
 
+    async function getPokemons() {
+      const allDefaultPokemonPromise = defaultPokemonsURL.map(fetchPokemon);
+      const pokemons = await Promise.all(allDefaultPokemonPromise);
+      setPokemons(pokemons);
     }
     getPokemons();
   }, [])
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('https://pokeapi.co/api/v2/location');
-      const data = await response.json();
-      setLocations(data);
-    }
-    fetchData();
-  }, []);
-
-  async function fetchData(URL) {
-    const response = await fetch(URL);
-    const responseJSON = await response.json();
-    return responseJSON;
+  function handleSetPageState(pageState) {
+    setPageState(pageState);
   }
 
-  async function onClickVisitMap(locationName) {
-    setPageState("pokemonList");
-
-    const selectedLocationJSON = await fetchData(`https://pokeapi.co/api/v2/location/${locationName}`);
-
-    if (selectedLocationJSON.areas.length === 0) {
-      setPageState("noEncounterPokemon");
-      return;
-    }
-
-    const randomAreaURL = getRandomArea(selectedLocationJSON);
-    const selectedAreaJSON = await fetchData(randomAreaURL);
-
-    console.log(selectedAreaJSON);
-    const randomEncounterPokemon = getRandomEncounterPokemon(selectedAreaJSON);
-    const encounterPokemonJSON = await fetchData(randomEncounterPokemon);
-    setEncounterPokemon(encounterPokemonJSON);
-    setLocations([]);
+  function handleSetPlayerPokemon(selectedPlayerPokemon) {
+    setPlayerPokemon(selectedPlayerPokemon);
   }
 
-  function getRandomArea(data) {
-    const randomAreaNumber = Math.floor(Math.random() * data.areas.length);
-    return data.areas[randomAreaNumber].url;
-  }
-
-  function getRandomEncounterPokemon(data) {
-    const randomEncounterIndexNumber = Math.floor(Math.random() * data.pokemon_encounters.length);
-    return data.pokemon_encounters[randomEncounterIndexNumber].pokemon.url;
+  function handleSetRandomArea(randomArea) {
+    setRandomArea(randomArea);
   }
 
 
-  function updateTeam(p) {
-    console.log('updating team with ' + p);
-    setPokemonList((prevList) => [...prevList, p]);
-    console.log(pokemonList);
-  }
-
-  async function handleBackToMapSelection() {
-    setPageState("locations");
-
-    try {
-      const response = await fetch('https://pokeapi.co/api/v2/location');
-      const data = await response.json();
-      setLocations(data);
-    } catch (error) {
-      console.error('Error fetching locations:', error);
+  function handleAddPokemonToList(pokemon) {
+    if (!pokemons.some(p => p.name === pokemon.name)) {
+      setPokemons((prevList) => [...prevList, pokemon]);
+      console.log(pokemons);
     }
   }
 
   return (
     <div className="App">
-      {pageState === "locations" ? (
-        <LocationList onClickVisitMap={onClickVisitMap} locations={locations}></LocationList>
-      ) : pageState === "pokemonList" ? (
-        <EncounterPokemon back={handleBackToMapSelection} updateTeam={updateTeam} pokemonList={pokemonList} encounterPokemon={encounterPokemon}></EncounterPokemon>
-      ) : pageState === "noEncounterPokemon" ? (
-        <NoLocation handleBackToMapSelection={handleBackToMapSelection}></NoLocation>
-      ) : (
-        <h1>Something went wrong!</h1>
-      )}
-    </div>
+      {
+        pageState === "noAreaFound" ? (
+          <NoAreaFound onHandlePageState={handleSetPageState} />
+        ) : pageState === "characterSelection" ? (
+          <PokemonList onHandlePageState={handleSetPageState}
+            onHandleSelectedPlayerPokemon={handleSetPlayerPokemon}
+            pokemons={pokemons} />
+        ) : pageState === "locationList" ? (
+          <LocationList onHandlePageState={handleSetPageState}
+            onHandleRandomArea={handleSetRandomArea} />
+        ) : pageState === "battleArena" ? (
+          <BattleArena playerPokemon={playerPokemon}
+            randomArea={randomArea}
+            onHandlePageState={handleSetPageState}
+            onHandleAddPokemonToList={handleAddPokemonToList} />
+        ) : (
+          <h1>Something went wrong!</h1>
+        )
+      }
+    </div >
   );
 }
 

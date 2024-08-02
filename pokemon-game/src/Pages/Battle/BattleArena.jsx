@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Character from "../../Components/Character/Character";
 import "./battleArena.css";
 import Loading from "../../Components/Loading/Loading";
-import Ending from "../Ending.jsx/Ending";
+import Ending from "../Ending/Ending.jsx";
 
 async function fetchEnemyPokemon(url) {
   const response = await fetch(url);

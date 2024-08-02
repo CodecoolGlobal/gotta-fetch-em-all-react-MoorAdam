@@ -2,45 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.11);
+img {
+  width: 88%;
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(14.1px);
-  -webkit-backdrop-filter: blur(14.1px);
-  border: 1px solid rgba(255, 255, 255, 0.29);
-  text-align: center;
-  min-width: 200px;
-}
-
-.grid-parent {
-  display: grid;
-  margin: 3%;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
-  gap: 30px;
-  place-content: center;
-  grid-template-areas: 'Header';
-}
-
-.grid-pokemon-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
-  gap: 30px;
-  margin: 3%;
-  justify-content: center;
-}
-
-.pokemon-list-wrapper {
-  width: 100%;
-  min-width: 200px;
+  margin: 18px;
   display: block;
-  justify-content: center;
-}
-
-.pokemonImage {
-  image-rendering: pixelated;
-  width: 80%;
-  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -65,20 +33,6 @@ html {
   border: 3px none #ffffff;
 }
 
-img {
-  width: 90%;
-  border-radius: 16px;
-  margin: 18px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.locationImg {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.297);
-
-}
-
 button {
   color: white;
   background: rgba(165, 94, 235, 0.505);
@@ -95,6 +49,7 @@ button {
     monospace;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 body {
@@ -111,107 +66,11 @@ body {
   padding: 0;
 }
 
-
-.pokemonBackground {
-  position: relative;
-  top: 0;
-  left: 0;
-  background-image: url('battle-screen.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-}
-
-.enemy-pokemon,
-.player-pokemon {
-  position: absolute;
-  text-align: center;
-  width: 20%;
-  height: 30%;
-}
-
-.enemy-pokemon {
-  left: 57%;
-  top: 23%;
-}
-
-.player-pokemon {
-  left: 22%;
-  top: 50%;
-}
-
-.enemy-pokemon img,
-.player-pokemon img {
-  width: 80%;
-  height: 80%;
-  image-rendering: pixelated;
-  border-radius: 16px;
-}
-
-.no-location {
-  text-align: center;
-  position: relative;
-  top: 60px;
-}
-
-.no-location button {
-  margin: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.29);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-iframe {
-  width: 480px;
-  height: 359px;
-  margin-bottom: 25.728px;
-}
-
-.buttons button {
-  background-color: black;
-  width: 90%;
-  color: white;
-  background: rgba(165, 94, 235, 0.505);
-  border-radius: 16px;
-  margin: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.29);
-  display: block;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-  font-weight: bold;
-}
-
-.buttons {
-  position: absolute;
-  top: 10px;
-}
-
-.won-page {
-  text-align: center;
-  position: relative;
-  top: 60px;
-}
-
-.won-page button {
-  margin: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.29);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.lost-page {
-  text-align: center;
-  position: relative;
-  top: 60px;
-}
-
-.lost-page button {
-  margin: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.29);
-  margin-left: auto;
-  margin-right: auto;
+.container {
+  display: grid;
+  margin: 3%;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
+  gap: 30px;
+  place-content: center;
+  grid-template-areas: 'Header';
 }

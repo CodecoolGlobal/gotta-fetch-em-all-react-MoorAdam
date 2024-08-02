@@ -1,0 +1,14 @@
+.pokemon-list-wrapper {
+  width: 100%;
+  min-width: 200px;
+  display: block;
+  justify-content: center;
+}
+
+.pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+  gap: 30px;
+  margin: 3%;
+  justify-content: center;
+}

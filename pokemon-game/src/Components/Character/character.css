@@ -1,0 +1,29 @@
+.enemy-pokemon,
+.player-pokemon {
+  position: absolute;
+  text-align: center;
+  width: 25%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.enemy-pokemon {
+  left: 56%;
+  top: 15%;
+}
+
+.player-pokemon {
+  left: 18%;
+  top: 37%;
+}
+
+.enemy-pokemon img,
+.player-pokemon img {
+  width: 70%;
+  height: auto;
+  max-height: 60%;
+  image-rendering: pixelated;
+  border-radius: 16px;
+}

@@ -1,0 +1,20 @@
+.battle-arena {
+  display: flex;
+  background-image: url('../../battle-screen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+.battle-arena button {
+  position: absolute;
+  left: 50%;
+  width: 30%;
+  min-width: 150px;
+  transform: translateX(-50%);
+  margin: auto;
+  margin-top: 20px;
+}

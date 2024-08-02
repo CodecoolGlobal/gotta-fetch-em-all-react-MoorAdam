@@ -1,0 +1,41 @@
+.health-bar {
+  position: relative;
+  width: 70%;
+  height: 25px;
+  border-radius: 10px;
+  background-color: white;
+  text-shadow: none;
+  border: 1px solid black;
+}
+
+#current-health {
+  position: absolute;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+.high-health {
+  background-color: rgb(0, 216, 0);
+}
+
+.mid-health {
+  background-color: yellow;
+}
+
+.mid-low-health {
+  background-color: orange;
+}
+
+.low-health {
+  background-color: red;
+}
+
+.zero-health {
+  display: absolute;
+  color: black;
+  height: 100%;
+  width: 100%;
+}

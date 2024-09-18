@@ -10,17 +10,24 @@ Developed by:
 
 ## Table of Contents
 - [Overview](#overview)
+- [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
 - [Learnings](#learnings)
-- [Technologies](#technologies)
 
 ## Overview
 This project aims to create a frontend-based Pokémon web application where users can:
   - Explore diverse Pokémon habitats.
   - Encounter various Pokémon species.
   - Engage in dynamic Pokémon battles.
+
+## Technologies
+Technologies used in this application:
+* [![JavaScript][JavaScript]][JavaScript-url]
+* [![React][React.js]][React-url]
+* [![PokéAPI][PokéAPI]][PokéAPI-url]
+* [![CSS3][CSS3]][CSS3-url]
 
 ## Installation
 To set up the project locally:
@@ -74,13 +81,6 @@ Key learnings from this project include:
   - Implementing a simple, automatic battle system.
   - Structuring a React application with reusable components.
   - Designing a responsive web interface using vanilla CSS.
-
-## Technologies
-Technologies used in this application:
-* [![JavaScript][JavaScript]][JavaScript-url]
-* [![React][React.js]][React-url]
-* [![PokéAPI][PokéAPI]][PokéAPI-url]
-* [![CSS3][CSS3]][CSS3-url]
 
 
 [JavaScript]: https://img.shields.io/badge/JavaScript-4B4B4B?style=for-the-badge&logo=javascript&logoColor=yellow

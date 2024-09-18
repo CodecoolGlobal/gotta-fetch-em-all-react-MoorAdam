@@ -5,8 +5,8 @@ Embark on an exciting journey into the world of Pokémon with the Gotta fetch() 
 Whether you're a seasoned Pokémon Trainer or new to the Pokémon world, this project offers a fun and interactive experience for everyone.
 
 Developed by:
-- [Ádám Moór](https://github.com/MoorAdam)
-- [Roland Keszeg](https://github.com/keszegroland)
+* [![mooradam][mooradam]][mooradam-url]
+* [![keszegroland][keszegroland]][keszegroland-url]
 
 ## Table of Contents
 - [Overview](#overview)
@@ -77,7 +77,21 @@ Key learnings from this project include:
 
 ## Technologies
 Technologies used in this application:
-  - JavaScript: For application logic.
-  - React: Front-end framework for building the user interface.
-  - Fetch API: For making asynchronous HTTP requests to the PokéApi.
-  - Vanilla CSS: For creating a responsive and visually appealing user experience.
+* [![JavaScript][JavaScript]][JavaScript-url]
+* [![React][React.js]][React-url]
+* [![PokéAPI][PokéAPI]][PokéAPI-url]
+* [![CSS3][CSS3]][CSS3-url]
+
+
+[JavaScript]: https://img.shields.io/badge/JavaScript-4B4B4B?style=for-the-badge&logo=javascript&logoColor=yellow
+[JavaScript-url]: https://www.javascript.com/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[PokéAPI]: https://img.shields.io/badge/PokeAPI-FFCB05?style=for-the-badge&logo=pokemon&logoColor=black
+[PokéAPI-url]: https://pokeapi.co/
+[CSS3]: https://img.shields.io/badge/CSS3-blue?style=for-the-badge
+[CSS3-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[keszegroland]: https://img.shields.io/badge/Roland%20Keszeg-181717?style=for-the-badge&logo=github&logoColor=white
+[keszegroland-url]: https://github.com/keszegroland
+[mooradam]: https://img.shields.io/badge/%C3%81d%C3%A1m%20Mo%C3%B3r-181717?style=for-the-badge&logo=github&logoColor=white
+[mooradam-url]: https://github.com/MoorAdam

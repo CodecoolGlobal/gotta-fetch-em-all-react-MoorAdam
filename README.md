@@ -66,11 +66,11 @@ To run the project:
 
   - Battle System: 
     - Detail: Engage in battles with wild Pokémon. The system is designed for dynamic, turn-based combat until one Pokémon's HP reaches zero.
-    - Visual: ![BattleVideo](.//MediaFilesForReadme/BattleVideo.mp4)
+    - Visual: ![Battle](.//MediaFilesForReadme/Battle.gif)
 
   - Capture Mechanism:
     - Detail: Successfully defeat wild Pokémon to capture them and add them to your collection. If your Pokémon's HP drops to zero, the encounter ends.
-    - Visuals: ![WinningVideo](.//MediaFilesForReadme/WinningVideo.mp4) ![LosingVideo](.//MediaFilesForReadme/LosingVideo.mp4)
+    - Visuals: ![Winning](.//MediaFilesForReadme/Winning.gif) ![Losing](.//MediaFilesForReadme/Losing.gif)
 
   - Repeat and Discover:
     - Detail: After each encounter, revisit locations to continue discovering new Pokémon and experiences.

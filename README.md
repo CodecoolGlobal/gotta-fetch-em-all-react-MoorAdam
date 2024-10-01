@@ -58,19 +58,19 @@ To run the project:
 ## Features
   - Location Exploration:
     - Detail: Navigate through up to 20 distinct locations, each with its own ecosystem and Pokémon species.
-    - Visual: ![LocationImage](.//ImagesReadme/LocationsImage.png)
+    - Visual: ![LocationImage](.//MediaFilesForReadme/LocationsImage.png)
 
   - Pokémon Encounters: 
     - Detail: Click on a location to meet a random Pokémon native to that area. Pokémon are displayed with their names, health and sprites.
-    - Visual: ![PokemonInventoryImage](.//ImagesReadme/PokemonInventoryImage.png)
+    - Visual: ![PokemonInventoryImage](.//MediaFilesForReadme/PokemonInventoryImage.png)
 
   - Battle System: 
     - Detail: Engage in battles with wild Pokémon. The system is designed for dynamic, turn-based combat until one Pokémon's HP reaches zero.
-    - Visual: ![BattleVideo](.//ImagesReadme/BattleVideo.mp4)
+    - Visual: ![BattleVideo](.//MediaFilesForReadme/BattleVideo.mp4)
 
   - Capture Mechanism:
     - Detail: Successfully defeat wild Pokémon to capture them and add them to your collection. If your Pokémon's HP drops to zero, the encounter ends.
-    - Visuals: ![WinningVideo](.//ImagesReadme/WinningVideo.mp4) ![LosingVideo](.//ImagesReadme/LosingVideo.mp4)
+    - Visuals: ![WinningVideo](.//MediaFilesForReadme/WinningVideo.mp4) ![LosingVideo](.//MediaFilesForReadme/LosingVideo.mp4)
 
   - Repeat and Discover:
     - Detail: After each encounter, revisit locations to continue discovering new Pokémon and experiences.
